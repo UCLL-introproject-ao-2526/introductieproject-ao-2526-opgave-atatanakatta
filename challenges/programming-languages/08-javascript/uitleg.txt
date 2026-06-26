@@ -1,0 +1,4 @@
+code kopiperen
+browser open f12 inspect menu 
+cosole open en de code in plaatsen
+we krijgen melding met et8xNAc2ic8
