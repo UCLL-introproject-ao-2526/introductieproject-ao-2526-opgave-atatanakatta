@@ -1,0 +1,31 @@
+instead of sending user waarde example email u send sql querry injection it can be anything example delete
+
+Een SQL-injection is een beveiligingslek waarbij een aanvaller kwaadaardige SQL-code invoert via een invoerveld (zoals een login- of zoekformulier) om een database te manipuleren.
+
+Kort voorbeeld:
+Als een loginquery zo is opgebouwd:
+
+SELECT * FROM users
+WHERE username = 'admin'
+AND password = 'wachtwoord';
+
+En een aanvaller voert als wachtwoord in:
+
+' OR '1'='1
+
+Dan wordt de query:
+
+SELECT * FROM users
+WHERE username = 'admin'
+AND password = '' OR '1'='1';
+
+Omdat '1'='1' altijd waar is, kan de login worden omzeild (afhankelijk van hoe de applicatie is gebouwd).
+
+Voorkomen:
+
+Gebruik prepared statements (parameterized queries).
+Valideer en controleer gebruikersinvoer.
+Geef databases alleen de minimale benodigde rechten.
+
+Definitie in één zin:
+SQL-injection is een aanval waarbij kwaadaardige SQL-code via gebruikersinvoer wordt toegevoegd om ongeautoriseerde toegang tot of manipulatie van een database te krijgen.
