@@ -1,13 +1,15 @@
 # debugging walkthrough or debugging reasoning.
 # black jack in python wth pygame!
+#
 import copy
 import random
 import pygame
 
-pygame.init()
+pygame.init() # zorgt voor opstart van pygame
 # game variables
 cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
-one_deck = 4 * cards
+suits = ['♠', '♥', '♦', '♣'] #added
+one_deck = [f"{rank}{suit}" for suit in suits for rank in cards] #added
 decks = 4
 WIDTH = 600
 HEIGHT = 900
@@ -32,9 +34,36 @@ outcome = 0
 add_score = False
 results = ['', 'PLAYER BUSTED o_O', 'Player WINS! :)', 'DEALER WINS :(', 'TIE GAME...']
 
+# MIJN TOEVOEGING
+# colors
+TABLE_GREEN = (30, 110, 60)
+TABLE_DARK = (20, 80, 40)
+CARD_WHITE = (250, 248, 245)
+RED_CARD = (180, 30, 30)
+BLACK_CARD = (30, 30, 30)
+GOLD = (218, 165, 32)
+BUTTON_BG = (240, 240, 240)
+BUTTON_HOVER = (255, 255, 255)
+BUTTON_BORDER = (180, 180, 180)
+SHADOW = (0, 0, 0, 80)
+
+    
+def get_rank(card):
+    return card[:-1] #added slice die alles teruggeeft behalve het laatste element.
+
+def get_suit(card):
+    return card[-1]
+
+def get_suit_color(card):
+    if '♥' in card or '♦' in card:
+        return RED_CARD
+    else:
+        return BLACK_CARD
 
 # deal cards by selecting randomly from deck, and make function for one card at a time
 def deal_cards(current_hand, current_deck):
+    if not current_deck:
+        return current_hand, current_deck
     card = random.randint(0, len(current_deck))
     current_hand.append(current_deck[card - 1])
     current_deck.pop(card - 1)
@@ -180,6 +209,7 @@ while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
+        # Keyboard inputs
         if event.type == pygame.MOUSEBUTTONUP:
             if not active:
                 if buttons[0].collidepoint(event.pos):

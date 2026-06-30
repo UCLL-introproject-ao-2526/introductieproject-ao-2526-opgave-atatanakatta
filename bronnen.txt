@@ -1,0 +1,28 @@
+Reflectie bij video: https://www.youtube.com/watch?v=D9o39180fTo
+
+Samenvatting
+De video gaat over Bryan Liles die uitlegt waarom het testen van je computercode zo belangrijk is
+. Hij vertelt dat je eigenlijk altijd moet testen als je een programma maakt
+. In het begin van zijn loopbaan werkte hij met programmeertalen zoals Perl en Java, maar hij maakte toen veel fouten
+. Zijn testen waren in die tijd rommelig en hadden geen goede structuur
+.
+Een belangrijk punt uit zijn verhaal is TDD. Dit betekent dat je eerst een test schrijft en daarna pas de echte code gaat maken
+. Zo denk je eerst goed na over wat je precies wilt bouwen
+. Hij praat ook over BDD. Dat klinkt ingewikkeld, maar het betekent simpelweg dat je beschrijft wat het programma moet doen voor de gebruiker, in plaats van alleen hoe de techniek werkt
+.
+Bryan legt uit dat testen in het begin heel lastig kan zijn
+. Het voelt alsof het veel extra tijd kost en dat kan frustrerend zijn
+. Je kunt je er in het begin zelfs een beetje ongeduldig of vervelend door voelen
+. Maar als je het blijft doen, dan wenst het vanzelf
+. Uiteindelijk bespaar je juist tijd, omdat je programma in één keer goed werkt en je minder vaak fouten hoeft te herstellen
+.
+Hij geeft het advies om testen te zien als een spier die je moet trainen
+. Je moet het elke dag doen, ook als je heel druk bent of een deadline hebt
+. Er zijn veel verschillende hulpmiddelen om te testen, zoals RSpec of Cucumber
+. Het maakt niet uit welk programma je kiest, als je het maar gebruikt om je werk beter te maken
+. Zijn belangrijkste boodschap is dat een programma zonder testen eigenlijk altijd "fout" is
+.
+Persoonlijke reflectie
+Ik vond de video erg interessant om naar te kijken, ook al wist ik nog niet veel over dit onderwerp. Het was fijn dat de spreker grappig was en eerlijk vertelde over de fouten die hij zelf vroeger maakte. Ik begrijp nu dat testen niet alleen voor de techniek is, maar vooral om te zorgen dat een programma echt doet wat de gebruiker verwacht. Het lijkt me in het begin wel lastig om steeds eerst een test te schrijven voordat je mag gaan programmeren, maar ik zie nu in dat dit later veel tijd en frustratie kan besparen.
+Conclusie
+De video laat op een leuke manier zien dat testen echt nodig is om goede software te maken. Het kost in het begin moeite, maar het levert uiteindelijk een veel beter resultaat op.
