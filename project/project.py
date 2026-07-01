@@ -11,7 +11,7 @@ cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
 suits = ['♠', '♥', '♦', '♣'] #added
 one_deck = [f"{rank}{suit}" for suit in suits for rank in cards] #added
 decks = 4
-WIDTH = 600
+WIDTH = 1080 # changed
 HEIGHT = 900
 screen = pygame.display.set_mode([WIDTH, HEIGHT])
 pygame.display.set_caption('Pygame Blackjack!')
@@ -22,6 +22,10 @@ smaller_font = pygame.font.Font('freesansbold.ttf', 36)
 active = False
 # win, loss, draw/push
 records = [0, 0, 0]
+player_name = "" # added naam opslag
+name_input = True # added als true we zitten op name screen , false we zijn aant spelen.
+cursor_visible = True     # added voor zichtbare cursor
+cursor_timer = 0          # added telt de frames van de cursor
 player_score = 0
 dealer_score = 0
 initial_deal = False
@@ -35,7 +39,7 @@ add_score = False
 results = ['', 'PLAYER BUSTED o_O', 'Player WINS! :)', 'DEALER WINS :(', 'TIE GAME...']
 
 # MIJN TOEVOEGING
-# colors
+# Add kleuren
 TABLE_GREEN = (30, 110, 60)
 TABLE_DARK = (20, 80, 40)
 CARD_WHITE = (250, 248, 245)
@@ -47,7 +51,7 @@ BUTTON_HOVER = (255, 255, 255)
 BUTTON_BORDER = (180, 180, 180)
 SHADOW = (0, 0, 0, 80)
 
-    
+# Add Helper Functie
 def get_rank(card):
     return card[:-1] #added slice die alles teruggeeft behalve het laatste element.
 
@@ -99,26 +103,23 @@ def draw_cards(player, dealer, reveal):
 
 
 # pass in player or dealer hand and get best score possible
-def calculate_score(hand):
-    # calculate hand score fresh every time, check how many aces we have
+def calculate_score(hand): #added betere logica voor ace
     hand_score = 0
-    aces_count = hand.count('A')
-    for i in range(len(hand)):
-        # for 2,3,4,5,6,7,8,9 - just add the number to total
-        for j in range(8):
-            if hand[i] == cards[j]:
-                hand_score += int(hand[i])
-        # for 10 and face cards, add 10
-        if hand[i] in ['10', 'J', 'Q', 'K']:
+    aces_count = sum(1 for c in hand if c.startswith('A'))
+    
+    for card in hand:
+        rank = get_rank(card)
+        if rank in ['J', 'Q', 'K']:
             hand_score += 10
-        # for aces start by adding 11, we'll check if we need to reduce afterwards
-        elif hand[i] == 'A':
+        elif rank == 'A':
             hand_score += 11
-    # determine how many aces need to be 1 instead of 11 to get under 21 if possible
-    if hand_score > 21 and aces_count > 0:
-        for i in range(aces_count):
-            if hand_score > 21:
-                hand_score -= 10
+        else:
+            hand_score += int(rank)
+    
+    # Reduce Aces from 11 to 1 as needed
+    while hand_score > 21 and aces_count > 0:
+        hand_score -= 10
+        aces_count -= 1
     return hand_score
 
 
@@ -187,7 +188,17 @@ run = True
 while run:
     # run game at our framerate and fill screen with bg color
     timer.tick(fps)
-    screen.fill('black')
+    # TABLE
+    screen.fill(TABLE_GREEN) #added background kleur groen
+    pygame.draw.ellipse(screen, TABLE_DARK, [50, 80, WIDTH - 100, HEIGHT - 160]) # ovaal vorm tafel
+    pygame.draw.ellipse(screen, GOLD, [50, 80, WIDTH - 100, HEIGHT - 160], 2) # gouden rand
+    # Use the Name of player
+    if player_name:
+        display_name = player_name.upper() if player_name else "Player"
+        p_text = smaller_font.render(f'{display_name}: {player}', True, 'white')
+    else:
+        p_label = smaller_font.render('YOUR HAND', True, 'white')
+
     # initial deal to player and dealer
     if initial_deal:
         for i in range(2):
@@ -205,8 +216,19 @@ while run:
         draw_scores(player_score, dealer_score)
     buttons = draw_game(active, records, outcome)
 
+
     # event handling, if quit pressed, then exit game
     for event in pygame.event.get():
+        if name_input:
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_BACKSPACE:
+                    player_name = player_name[:-1] # bevestigd de naam alleen als er iets getypts is.
+                elif event.key == pygame.K_RETURN and player_name.strip():
+                    name_input = False
+                else:
+                    player_name += event.unicode
+                    continue
+        ##############
         if event.type == pygame.QUIT:
             run = False
         # Keyboard inputs
