@@ -18,3 +18,6 @@ Nieuwe card icons toevoegd aan de kaarten gebundeld als bundels onder suit.
 ik heb de project code van black jack verandert ik heb nieuwe variabels, methodes toegevoed. calculate_score function aangepast de ace logica is duidelijker met while loop. ik gebruik get_rank(card) voor strip om de suit vooraleer de waarde nagekeken wordt. 
 ## 30 juni 2026 21:30
 Email gestuurd en de reactie op mijn email nagekeken betreft HTTP Error 404: Not Found in sommige challenges. Er was een probleem met de directory names deze heb ik aangepast in de folder.
+
+Project error bij toevoegen van de input screen, mijn spel crash constact bij input van een muisklik
+crash werd door in functie deal_cards door lijn: card = random.randint(0, len(current_deck)) deze aangepast naar card = random.randint(0, len(current_deck) - 1)
