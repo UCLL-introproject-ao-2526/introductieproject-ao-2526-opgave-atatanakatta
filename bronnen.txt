@@ -1,28 +1,29 @@
 Reflectie bij video: https://www.youtube.com/watch?v=D9o39180fTo
 
-Samenvatting
-De video gaat over Bryan Liles die uitlegt waarom het testen van je computercode zo belangrijk is
-. Hij vertelt dat je eigenlijk altijd moet testen als je een programma maakt
-. In het begin van zijn loopbaan werkte hij met programmeertalen zoals Perl en Java, maar hij maakte toen veel fouten
-. Zijn testen waren in die tijd rommelig en hadden geen goede structuur
-.
-Een belangrijk punt uit zijn verhaal is TDD. Dit betekent dat je eerst een test schrijft en daarna pas de echte code gaat maken
-. Zo denk je eerst goed na over wat je precies wilt bouwen
-. Hij praat ook over BDD. Dat klinkt ingewikkeld, maar het betekent simpelweg dat je beschrijft wat het programma moet doen voor de gebruiker, in plaats van alleen hoe de techniek werkt
-.
-Bryan legt uit dat testen in het begin heel lastig kan zijn
-. Het voelt alsof het veel extra tijd kost en dat kan frustrerend zijn
-. Je kunt je er in het begin zelfs een beetje ongeduldig of vervelend door voelen
-. Maar als je het blijft doen, dan wenst het vanzelf
-. Uiteindelijk bespaar je juist tijd, omdat je programma in één keer goed werkt en je minder vaak fouten hoeft te herstellen
-.
-Hij geeft het advies om testen te zien als een spier die je moet trainen
-. Je moet het elke dag doen, ook als je heel druk bent of een deadline hebt
-. Er zijn veel verschillende hulpmiddelen om te testen, zoals RSpec of Cucumber
-. Het maakt niet uit welk programma je kiest, als je het maar gebruikt om je werk beter te maken
-. Zijn belangrijkste boodschap is dat een programma zonder testen eigenlijk altijd "fout" is
-.
-Persoonlijke reflectie
-Ik vond de video erg interessant om naar te kijken, ook al wist ik nog niet veel over dit onderwerp. Het was fijn dat de spreker grappig was en eerlijk vertelde over de fouten die hij zelf vroeger maakte. Ik begrijp nu dat testen niet alleen voor de techniek is, maar vooral om te zorgen dat een programma echt doet wat de gebruiker verwacht. Het lijkt me in het begin wel lastig om steeds eerst een test te schrijven voordat je mag gaan programmeren, maar ik zie nu in dat dit later veel tijd en frustratie kan besparen.
-Conclusie
-De video laat op een leuke manier zien dat testen echt nodig is om goede software te maken. Het kost in het begin moeite, maar het levert uiteindelijk een veel beter resultaat op.
+Samenvatting:
+De video is een presentatie van Bryan Liles op een conferentie over het belang van software testing. 
+Hij begint met een persoonlijk verhaal over zijn eigen carrière: in het begin werkte hij met Perl en Java en maakte hij veel fouten omdat hij niet goed testte. 
+Zijn testcode was rommelig, had geen structuur en was eigenlijk nutteloos. Dit veranderde pas toen hij Test-Driven Development (TDD) ontdekte.
+
+TDD is een methode waarbij je eerst een test schrijft die faalt, daarna de minimale code schrijft om die test te laten slagen, en vervolgens de code refactort. 
+Het voordeel is dat je gedwongen wordt om vooraf na te denken over wat je precies wilt bouwen, in plaats van direct te beginnen met programmeren. 
+Liles benadrukt dat dit in het begin onnatuurlijk en frustrerend aanvoelt, omdat het lijkt alsof je extra tijd kwijt bent. 
+Toch is het volgens hem de enige manier om betrouwbare software te maken.
+
+Hij introduceert ook Behavior-Driven Development (BDD), een uitbreiding op TDD waarbij je tests schrijft in de taal van de gebruiker. 
+In plaats van te focussen op technische details, beschrijf je wat het programma moet doen vanuit het perspectief van degene die het gaat gebruiken. 
+Dit maakt tests leesbaarder voor niet-technische stakeholders en zorgt ervoor dat developers niet alleen nadenken over hoe iets werkt, maar ook of het de juiste oplossing is.
+
+Liles vergelijkt testen met het trainen van een spier: je moet het elke dag doen, ook als je druk bent of een deadline hebt. 
+Hij noemt verschillende tools zoals RSpec en Cucumber, maar benadrukt dat de keuze van tool minder belangrijk is dan de gewoonte zelf. 
+Zijn kernboodschap is duidelijk: code zonder tests is per definitie fout, omdat je nooit zeker weet of het werkt zoals bedoeld.
+
+Persoonlijke reflectie:
+Ik ben het eens met Liles dat testen essentieel is voor betrouwbare software. 
+Zijn vergelijking met een spier die je moet trainen vind ik overtuigend, omdat het een abstract concept concreet maakt. 
+Wel vraag ik me af of TDD altijd de beste aanpak is: bij kleine, experimentele projecten kan het vooraf schrijven van tests het creatieve proces belemmeren. 
+Ik waardeer zijn eerlijkheid over zijn eigen fouten in het verleden; dat maakt de presentatie authentiek en minder moraliserend dan veel tech-talks. 
+Zijn presentatiestijl is energiek en humoristisch, wat het onderwerp toegankelijk maakt, al had ik soms de indruk dat de grappen de kernboodschap wat verdunnen.
+
+Conclusie:
+Liles overtuigt met persoonlijke anekdotes dat testen onmisbaar is; zijn TDD-advies is sterk, al twijfel ik of het voor elk project geschikt is.
