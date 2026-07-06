@@ -1,1 +1,25 @@
-ik vond de boedoeling van de black jack project video van youtube leuk maar was niet de juiste persoon om van te leren de maken van de youtube video was niet de beste persoon om gelijkaardige project te laten leiden.
+Dag Daan
+
+
+Ik ben Achmed Isayev, student Toegepaste Informatica Afstandsonderwijs.
+Nu het project is afgerond, wilde ik graag even terugkomen op mijn ervaring. Ik heb de afgelopen dagen met veel interesse deelgenomen aan dit project en de bijbehorende challenges, en wilde u enkele observaties en suggesties delen op het cursus introductieproject.
+
+Wat ik ervan verwachtte en wat ik uiteindelijk ervaarde, was overwegend positief. Ik vond het vooral leuk om de challenges te doen soms was het moeilijk om de juiste informatie te vinden precies dit bracht me terug achter de pc met motivatie om ze verder af te werken. Ik leerde steeds iets bij tijdens het zoeken naar oplossingen en het investeren van tijd om juiste antwoord te vinden was het waard.
+
+Het imiteren van het Blackjack-project vond ik een leuke opdracht. 
+Als beginner in programmeren was het een goede "inleiding". 
+Het idee achter het Blackjack-project en de bijbehorende video vond ik leuk, maar de persoon in de video was voor mij niet de beste om van te leren. Voor gelijkaardige projecten zou een andere presentator wellicht beter werken.
+
+
+Conclusie:
+
+De combinatie van zelfstandig werken en hands-on challenges heeft me veel bijgebracht. Mijn voornaamste suggestie is om de instructievideo voor het Blackjack-project te vervangen of aan te vullen met een alternatief auteur, zodat ook beginners met verschillende leerstijlen goed mee kunnen komen en correcte aanpassing voor de folders en de benamingen voor de verify.py in de map challenges zou het minder frustrerend maken.
+
+
+Met vriendelijke groet
+
+Achmed Isayev
+r1122204
+
+
+
