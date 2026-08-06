@@ -6,7 +6,11 @@ pygame.init() # zorgt voor opstart van pygame
 pygame.mixer.init()
 # game variables
 cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+
+# [dn] ik zou die tekens vermijden. Het ziet er leuk uit, maar je kan ze niet typen en gaat ze altijd moeten copy-pasten
+# 's', 'h', 'd', 'c' is mindenr leuk maar wel een stuk handiger
 suits = ['♠', '♥', '♦', '♣'] # added
+
 one_deck = [f"{rank}{suit}" for suit in suits for rank in cards] # added
 decks = 4
 WIDTH = 600
@@ -15,12 +19,17 @@ screen = pygame.display.set_mode([WIDTH, HEIGHT])
 pygame.display.set_caption('Pygame Blackjack!')
 fps = 60
 timer = pygame.time.Clock()
+
+# [dn] om herhaling te vermijden kan je dit in een lus initializeren. Als je dan een ander font wilt moet je het maar op 1 plek aanpassen
+# ook, waarom 3 keer een font creeren van 26?
 font = pygame.font.Font('dejavusans.ttf', 26)
 large_font = pygame.font.Font('dejavusans.ttf', 80)
 medium_font = pygame.font.Font('dejavusans.ttf', 26)
 smaller_font = pygame.font.Font('dejavusans.ttf', 26)
 small_font = pygame.font.Font('dejavusans.ttf', 18)  # Voor kleine suits
 intro_font = pygame.font.Font('dejavusans.ttf', 50)
+
+# [dn] cryptische variabele naam. Wat is active?
 active = False
 # win, loss, draw/push
 records = [0, 0, 0]
@@ -97,6 +106,7 @@ def draw_scores(player, dealer):
 # draw cards visually onto screen
 def draw_cards(player, dealer, reveal):
     for i in range(len(player)):
+        # [dn] je hebt hier veel repititie van constanten, vooral 70, 120. Maak er een variabele van, dan heeft het ook meteen een naam
         pygame.draw.rect(screen, 'white', [70 + (70 * i), 460 + (5 * i), 120, 220], 0, 5)
         screen.blit(font.render(player[i], True, 'black'), (75 + 70 * i, 465 + 5 * i))
         screen.blit(font.render(player[i], True, 'black'), (75 + 70 * i, 635 + 5 * i))
@@ -130,6 +140,7 @@ def calculate_score(hand): #added betere logica voor ace
             hand_score += int(rank)
     
     # Reduce Aces from 11 to 1 as needed
+    # [dn] eigenlijk heb je hier geen loop nodig, gewoon wat wiskunde
     while hand_score > 21 and aces_count > 0:
         hand_score -= 10
         aces_count -= 1
