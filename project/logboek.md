@@ -31,3 +31,6 @@ Project blackjack code gerefactored, gefixt en opgeruimd. Buttons verplaatst, fo
 
 ## 5 juli 2026 21:00
 Ik heb verder aan blackjack gewerkt. Ik heb sounds bijgevoegd bij de DEAL-knop, HIT-knop en STAND-knop om het spel levendiger te maken. Door dit te doen heb ik geleerd hoe je sound moet toevoegen en in de code moet plaatsen. Eerst had ik het geluid direct in de event loop gezet, maar dat bleek problemen te geven omdat het geluid elke frame opnieuw afspeelde als de knop ingedrukt bleef. Het voelt alsof ik langzaam van "nadoen" naar "begrijpen" aan het schuiven ben. Toch ben ik nog steeds onzeker over mijn algemene code-structuur.
+
+## 11 augustus 2026 23:00
+Vandaag heb ik het project via Git Pull bijgewerkt met de feedback van de docent. Daarna heb ik de feedback bekeken en toegepast op mijn project. Ik heb verschillende onderdelen aangepast en verbeterd, zodat het project beter aansluit bij de verwachtingen en feedback van de docent.

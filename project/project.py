@@ -9,7 +9,7 @@ cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
 
 # [dn] ik zou die tekens vermijden. Het ziet er leuk uit, maar je kan ze niet typen en gaat ze altijd moeten copy-pasten
 # 's', 'h', 'd', 'c' is mindenr leuk maar wel een stuk handiger
-suits = ['♠', '♥', '♦', '♣'] # added
+suits = ['s', 'h', 'd', 'c'] # added
 
 one_deck = [f"{rank}{suit}" for suit in suits for rank in cards] # added
 decks = 4
@@ -24,13 +24,13 @@ timer = pygame.time.Clock()
 # ook, waarom 3 keer een font creeren van 26?
 font = pygame.font.Font('dejavusans.ttf', 26)
 large_font = pygame.font.Font('dejavusans.ttf', 80)
-medium_font = pygame.font.Font('dejavusans.ttf', 26)
-smaller_font = pygame.font.Font('dejavusans.ttf', 26)
+# medium_font = pygame.font.Font('dejavusans.ttf', 26)
+# smaller_font = pygame.font.Font('dejavusans.ttf', 26)
 small_font = pygame.font.Font('dejavusans.ttf', 18)  # Voor kleine suits
 intro_font = pygame.font.Font('dejavusans.ttf', 50)
 
 # [dn] cryptische variabele naam. Wat is active?
-active = False
+game_active = False
 # win, loss, draw/push
 records = [0, 0, 0]
 player_name = "" # added naam opslag
@@ -98,9 +98,9 @@ def deal_cards(current_hand, current_deck):
 
 # draw scores for player and dealer on screen
 def draw_scores(player, dealer):
-    screen.blit(medium_font.render(f' {player}', True, 'red'), (330, 780))
+    screen.blit(font.render(f' {player}', True, 'red'), (330, 780))
     if reveal_dealer:
-        screen.blit(medium_font.render(f'{dealer}', True, 'red'), (360, 100))
+        screen.blit(font.render(f'{dealer}', True, 'red'), (360, 100))
 
 
 # draw cards visually onto screen
@@ -150,7 +150,7 @@ def calculate_score(hand): #added betere logica voor ace
 # draw game conditions and buttons
 def draw_game(act, record, result):
     button_list = []
-    # initially on startup (not active) only option is to deal new hand
+    # initially on startup (not game_active) only option is to deal new hand
     if not act:     # [x, y, button_width, button_height]
         deal = pygame.Rect(0, 0, 200, 200) # maakt een rect zonder vaste positie
         deal.center = screen.get_rect().center  # knop centreren exact in midden
@@ -178,7 +178,7 @@ def draw_game(act, record, result):
         screen.blit(stand_text, text_rect)  # gecentreerd in knop
         button_list.append(stand)
         
-        score_text = smaller_font.render(f'Win: {record[0]}     Loss: {record[1]}     Draw: {record[2]}', True, 'white')
+        score_text = font.render(f'Win: {record[0]}     Loss: {record[1]}     Draw: {record[2]}', True, 'white')
         text_rect = score_text.get_rect(midbottom = screen.get_rect().midbottom)
         screen.blit(score_text, text_rect) # "Wins: 0 Losses: 0 Draws: 0" 
     # if there is an outcome for the hand that was played, display a restart button and tell user what happened
@@ -243,10 +243,10 @@ while run:
 
         # Keyboard inputs
         if event.type == pygame.MOUSEBUTTONUP:
-            if not active:
+            if not game_active:
                 if buttons[0].collidepoint(event.pos):
                     deal_sound.play() # ADDED SOUND
-                    active = True
+                    game_active = True
                     initial_deal = True
                     game_deck = copy.deepcopy(one_deck * decks)
                     my_hand = []
@@ -270,7 +270,7 @@ while run:
                 elif len(buttons) == 3:
                     if buttons[2].collidepoint(event.pos):
                         click_sound.play() #ADDED
-                        active = True
+                        game_active = True
                         initial_deal = True
                         game_deck = copy.deepcopy(one_deck * decks)
                         my_hand = []
@@ -308,7 +308,7 @@ while run:
         display_text = player_name + ("|" if cursor_visible else "")
         name_surface = font.render(display_text, True, 'black')
         screen.blit(name_surface, (input_box.x + 15, input_box.centery - name_surface.get_height() // 2))
-        hint = smaller_font.render("Press ENTER to start", True, (200, 200, 200))
+        hint = font.render("Press ENTER to start", True, (200, 200, 200))
         screen.blit(hint, (WIDTH // 2 - hint.get_width() // 2, HEIGHT // 2 + 60))
     
     else:
@@ -319,11 +319,11 @@ while run:
         
         # Labels
         if player_name:
-            p_label = smaller_font.render(f"{player_name.upper()}", True, 'white')
+            p_label = font.render(f"{player_name.upper()}", True, 'white')
         else:
-            p_label = smaller_font.render('YOUR HAND', True, 'white')
+            p_label = font.render('YOUR HAND', True, 'white')
         
-        d_label = smaller_font.render('DEALER', True, 'white')
+        d_label = font.render('DEALER', True, 'white')
         screen.blit(d_label, (WIDTH // 2 - d_label.get_width() // 2, 100)) # player name
         screen.blit(p_label, (WIDTH // 2 - p_label.get_width() // 2, 780)) # player name
         
@@ -335,7 +335,7 @@ while run:
             initial_deal = False
         
         # Game actief
-        if active:
+        if game_active:
             player_score = calculate_score(my_hand)
             draw_cards(my_hand, dealer_hand, reveal_dealer)
             if reveal_dealer:
@@ -343,6 +343,6 @@ while run:
                 if dealer_score < 17:
                     dealer_hand, game_deck = deal_cards(dealer_hand, game_deck)
             draw_scores(player_score, dealer_score)
-        buttons = draw_game(active, records, outcome)
+        buttons = draw_game(game_active, records, outcome)
     pygame.display.flip()
 pygame.quit()
