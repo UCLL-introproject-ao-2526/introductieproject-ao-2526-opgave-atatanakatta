@@ -29,7 +29,7 @@ large_font = pygame.font.Font('dejavusans.ttf', 80)
 small_font = pygame.font.Font('dejavusans.ttf', 18)  # Voor kleine suits
 intro_font = pygame.font.Font('dejavusans.ttf', 50)
 
-# [dn] cryptische variabele naam. Wat is active?
+# [dn] cryptische variabele naam. Wat is active? = active - aangepast naar game_active
 game_active = False
 # win, loss, draw/push
 records = [0, 0, 0]
@@ -105,24 +105,27 @@ def draw_scores(player, dealer):
 
 # draw cards visually onto screen
 def draw_cards(player, dealer, reveal):
+    card_spacing = 70
+    card_width = 120
+
     for i in range(len(player)):
         # [dn] je hebt hier veel repititie van constanten, vooral 70, 120. Maak er een variabele van, dan heeft het ook meteen een naam
-        pygame.draw.rect(screen, 'white', [70 + (70 * i), 460 + (5 * i), 120, 220], 0, 5)
+        pygame.draw.rect(screen, 'white', [card_spacing + (card_spacing * i), 460 + (5 * i), card_width, 220], 0, 5)
         screen.blit(font.render(player[i], True, 'black'), (75 + 70 * i, 465 + 5 * i))
         screen.blit(font.render(player[i], True, 'black'), (75 + 70 * i, 635 + 5 * i))
-        pygame.draw.rect(screen, 'red', [70 + (70 * i), 460 + (5 * i), 120, 220], 5, 5)
+        pygame.draw.rect(screen, 'red', [card_spacing + (card_spacing * i), 460 + (5 * i), card_width, 220], 5, 5)
     
 
     # if player hasn't finished turn, dealer will hide one card
     for i in range(len(dealer)):
-        pygame.draw.rect(screen, 'white', [70 + (70 * i), 160 + (5 * i), 120, 220], 0, 5)
+        pygame.draw.rect(screen, 'white', [card_spacing + (card_spacing * i), 160 + (5 * i), card_width, 220], 0, 5)
         if i != 0 or reveal:
-            screen.blit(font.render(dealer[i], True, 'black'), (75 + 70 * i, 165 + 5 * i))
-            screen.blit(font.render(dealer[i], True, 'black'), (75 + 70 * i, 335 + 5 * i))
+            screen.blit(font.render(dealer[i], True, 'black'), (75 + card_spacing * i, 165 + 5 * i))
+            screen.blit(font.render(dealer[i], True, 'black'), (75 + card_spacing * i, 335 + 5 * i))
         else:
-            screen.blit(font.render('?', True, 'black'), (75 + 70 * i, 165 + 5 * i))
-            screen.blit(font.render('?', True, 'black'), (75 + 70 * i, 335 + 5 * i))
-        pygame.draw.rect(screen, 'blue', [70 + (70 * i), 160 + (5 * i), 120, 220], 5, 5)
+            screen.blit(font.render('?', True, 'black'), (75 + card_spacing * i, 165 + 5 * i))
+            screen.blit(font.render('?', True, 'black'), (75 + card_spacing * i, 335 + 5 * i))
+        pygame.draw.rect(screen, 'blue', [card_spacing + (card_spacing * i), 160 + (5 * i), card_width, 220], 5, 5)
 
 
 # pass in player or dealer hand and get best score possible
@@ -141,9 +144,9 @@ def calculate_score(hand): #added betere logica voor ace
     
     # Reduce Aces from 11 to 1 as needed
     # [dn] eigenlijk heb je hier geen loop nodig, gewoon wat wiskunde
-    while hand_score > 21 and aces_count > 0:
-        hand_score -= 10
-        aces_count -= 1
+    if hand_score > 21:
+        aces_to_reduce = min(aces_count, (hand_score - 21 + 9) // 10)
+        hand_score -= aces_to_reduce * 10
     return hand_score
 
 
